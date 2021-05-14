@@ -78,76 +78,99 @@ function config.galaxyline()
         ViMode = {
             provider = function()
                 -- auto change color according the vim mode
+                local alias = {
+                    n = "NORMAL",
+                    v = "VISUAL",
+                    V = "V-LINE",
+                    [""] = "V-BLOCK",
+                    s = "SELECT",
+                    S = "S-LINE",
+                    [""] = "S-BLOCK",
+                    i = "INSERT",
+                    R = "REPLACE",
+                    c = "COMMAND",
+                    r = "PROMPT",
+                    ["!"] = "EXTERNAL",
+                    t = "TERMINAL"
+                }
                 local mode_color = {
-                    n = colors.gray,
-                    i = colors.red,
-                    v = colors.cyan,
-                    [''] = colors.purple,
-                    V = colors.cyan,
-                    c = colors.magenta,
-                    no = colors.blue,
+                    n = colors.green,
+                    v = colors.orange,
+                    V = colors.orange,
+                    [""] = colors.orange,
                     s = colors.orange,
                     S = colors.orange,
-                    [''] = colors.orange,
-                    ic = colors.yellow,
+                    [""] = colors.orange,
+                    i = colors.red,
                     R = colors.red,
-                    Rv = colors.red,
-                    cv = colors.blue,
-                    ce = colors.blue,
-                    r = colors.cyan,
-                    rm = colors.cyan,
-                    ['r?'] = colors.cyan,
-                    ['!'] = colors.blue,
-                    t = colors.blue
+                    c = colors.blue,
+                    r = colors.magenta,
+                    ["!"] = colors.darkblue,
+                    t = colors.darkblue
                 }
-                vim.api.nvim_command('hi GalaxyViMode guifg=' ..
-                                         mode_color[vim.fn.mode()])
-                return '  LVIM   '
+                local vim_mode = vim.fn.mode()
+                vim.api.nvim_command("hi GalaxyViMode guifg=" ..
+                                         mode_color[vim_mode])
+                return alias[vim_mode] .. "    "
             end,
-            highlight = {colors.red, colors.bg}
+            highlight = {colors.red, colors.line_bg, "bold"}
         }
     }
-    print(vim.fn.getbufvar(0, 'ts'))
-    vim.fn.getbufvar(0, 'ts')
     gls.left[2] = {
-        GitIcon = {
-            provider = function() return '  ' end,
-            condition = condition.check_git_workspace,
-            separator = ' ',
-            separator_highlight = {'NONE', colors.bg},
-            highlight = {colors.orange, colors.bg}
+        FileIcon = {
+            provider = "FileIcon",
+            condition = buffer_not_empty,
+            highlight = {colors.magenta, colors.line_bg}
         }
     }
     gls.left[3] = {
-        GitBranch = {
-            provider = 'GitBranch',
-            condition = condition.check_git_workspace,
-            separator = ' ',
-            separator_highlight = {'NONE', colors.bg},
-            highlight = {colors.grey, colors.bg}
+        FileName = {
+            provider = {"FileName"},
+            condition = buffer_not_empty,
+            separator = " ",
+            separator_highlight = {"NONE", colors.bg},
+            highlight = {colors.magenta, colors.line_bg}
         }
     }
     gls.left[4] = {
-        DiffAdd = {
-            provider = 'DiffAdd',
-            condition = condition.hide_in_width,
-            icon = '   ',
-            highlight = {colors.green, colors.bg}
-        }
-    }
-    gls.left[5] = {
-        DiffModified = {
-            provider = 'DiffModified',
-            condition = condition.hide_in_width,
-            icon = '   ',
+        GitIcon = {
+            provider = function() return "  " end,
+            condition = condition.check_git_workspace,
+            -- separator = " ",
+            separator_highlight = {"NONE", colors.bg},
             highlight = {colors.orange, colors.bg}
         }
     }
+    gls.left[5] = {
+        GitBranch = {
+            provider = "GitBranch",
+            condition = condition.check_git_workspace,
+            separator = " ",
+            separator_highlight = {"NONE", colors.bg},
+            highlight = {colors.grey, colors.bg}
+        }
+    }
     gls.left[6] = {
-        DiffRemove = {
-            provider = 'DiffRemove',
+        DiffAdd = {
+            provider = "DiffAdd",
             condition = condition.hide_in_width,
-            icon = '   ',
+            icon = "   ",
+            highlight = {colors.green, colors.bg}
+        }
+    }
+    gls.left[7] = {
+        DiffModified = {
+            provider = "DiffModified",
+            condition = condition.hide_in_width,
+            icon = "   ",
+            highlight = {colors.orange, colors.bg}
+        }
+    }
+    gls.left[8] = {
+        DiffRemove = {
+            provider = "DiffRemove",
+            condition = condition.hide_in_width,
+            icon = "   ",
             highlight = {colors.red, colors.bg}
         }
     }
