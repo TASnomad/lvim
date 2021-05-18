@@ -174,11 +174,11 @@ function config.whichkey()
         },
         ['o'] = {
             name = '+fold',
-            ['i'] = {'<Cmd>:set foldmethod indent<CR>', 'indent (default)'},
-            ['m'] = {'<Cmd>:set foldmethod manual<CR>', 'manual'},
-            ['e'] = {'<Cmd>:set foldmethod expr<CR>', 'expr'},
-            ['d'] = {'<Cmd>:set foldmethod diff<CR>', 'diff'},
-            ['M'] = {'<Cmd>:set foldmethod marker<CR>', 'marker'}
+            ['i'] = {'<Cmd>:set foldmethod=indent<CR>', 'indent (default)'},
+            ['m'] = {'<Cmd>:set foldmethod=manual<CR>', 'manual'},
+            ['e'] = {'<Cmd>:set foldmethod=expr<CR>', 'expr'},
+            ['d'] = {'<Cmd>:set foldmethod=diff<CR>', 'diff'},
+            ['M'] = {'<Cmd>:set foldmethod=marker<CR>', 'marker'}
         },
         ['g'] = {
             name = '+git',
