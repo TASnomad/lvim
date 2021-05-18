@@ -144,6 +144,8 @@ configs['commands'] = function()
         'command! VimspectorInit lua require("configs.global.debugers").init_vimspector()')
     -- Init Dap
     vim.cmd('command! DapInit lua require("configs.global.debugers").init_dap()')
+    -- Spectre
+    vim.cmd('command! Spectre lua require("spectre").open()')
 end
 
 configs['keymaps'] = function()

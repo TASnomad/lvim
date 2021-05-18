@@ -47,6 +47,14 @@ modules['voldikss/vim-floaterm'] = {config = ui_config.floaterm}
 
 local editor_config = require('modules.global.configs.editor')
 
+modules['windwp/nvim-spectre'] = {
+    config = editor_config.spectre,
+    requires = {
+        {'nvim-lua/popup.nvim', opt = true},
+        {'nvim-lua/plenary.nvim', opt = true}
+    }
+}
+
 modules['lambdalisue/suda.vim'] = {
     event = {'BufRead', 'BufNewFile'},
     config = editor_config.suda

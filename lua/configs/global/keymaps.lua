@@ -9,8 +9,7 @@ keymaps['normal'] = {
     {'<C-s>', ':w<CR>'}, -- Save
     {'<C-a>', ':wa<CR>'}, -- Save all
     {'<C-e>', ':qa!<CR>'}, -- Close all, exit nvim
-    {'<C-x>', ':BufferClose<CR>'}, -- Buffer close
-    {'<C-q>', ':BufferClose!<CR>'}, -- Buffer Close whitout saving
+    {'<C-x>', '<C-w>o'}, -- Close window
     {'<C-d>', ':bdelete<CR>'}, -- BDelete
     {'<C-h>', '<C-w>h'}, -- Move to window left
     {'<C-l>', '<C-w>l'}, -- Move to window right
@@ -36,6 +35,7 @@ keymaps['normal'] = {
     {'<A-]>', ':foldclose<CR>'}, -- Fold close
     {'<A-.>', ':BookmarkToggle<CR>'}, -- Bookmark toggle
     {'<A-,>', ':Neoformat<CR>'}, -- Format code
+    {'<A-s>', ':Spectre<CR>'}, -- Comment toggle
     {'<A-/>', ':CommentToggle<CR>'}, -- Comment toggle
     {'<A-f>', ':LspFormatting<CR>'}, -- Lsp format code
     {'<A-g>', ':LspReferences<CR>'}, -- Lsp references
