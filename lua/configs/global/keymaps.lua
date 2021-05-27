@@ -9,7 +9,7 @@ keymaps['normal'] = {
     {'<C-s>', ':w<CR>'}, -- Save
     {'<C-a>', ':wa<CR>'}, -- Save all
     {'<C-e>', ':qa!<CR>'}, -- Close all, exit nvim
-    {'<C-x>', '<C-w>x'}, -- Close current window
+    {'<C-x>', '<C-w>c'}, -- Close current window
     {'<C-o>', '<C-w>o'}, -- Close  other window
     {'<C-d>', ':bdelete<CR>'}, -- BDelete
     {'<C-h>', '<C-w>h'}, -- Move to window left
