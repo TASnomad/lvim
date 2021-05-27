@@ -86,7 +86,7 @@ modules['tpope/vim-fugitive'] = {}
 modules['f-person/git-blame.nvim'] = {config = editor_config.blame}
 
 modules['TimUntersberger/neogit'] = {
-    event = {'BufRead', 'BufNewFile'},
+    cmd = {'Neogit'},
     config = editor_config.neogit,
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
@@ -188,6 +188,6 @@ modules['AckslD/nvim-whichkey-setup.lua'] =
 
 modules['iamcco/markdown-preview.nvim'] = {run = 'cd app && yarn install'}
 
-modules['airblade/vim-rooter'] = {config = tools_config.rooter}
+modules['ahmedkhalf/lsp-rooter.nvim'] = {}
 
 return modules

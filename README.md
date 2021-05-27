@@ -12,7 +12,7 @@
 - Add or remove settings, rewrite all settings
 - Dynamic LSP activation
 - Dynamic debugging activation - Vimspector or Dap
-- By default - 53 plugins
+- By default - 54 plugins
 - Loading time - 069.870
 
 ![Screenshot from 2021-04-25 15-07-07](https://user-images.githubusercontent.com/82431193/115992744-f0b6de00-a5d7-11eb-8ff0-04d767812245.png)
@@ -148,7 +148,7 @@ export PATH="$HOME/.config/nvim/bin:$PATH"
 
 [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
-[vim-rooter](https://github.com/airblade/vim-rooter)
+[lsp-rooter.nvim](https://github.com/ahmedkhalf/lsp-rooter.nvim)
 
 ## Keymaps
 
@@ -169,7 +169,8 @@ export PATH="$HOME/.config/nvim/bin:$PATH"
 | `<C-s>`     | `:w<CR>`                                        | Save                                 |
 | `<C-a>`     | `:wa<CR>`                                       | Save all                             |
 | `<C-e>`     | `:qa!<CR>`                                      | Close all, exit nvim                 |
-| `<C-x>`     | `<C-w>o`                                        | Close window                         |
+| `<C-x>`     | `<C-w>x`                                        | Close current window                 |
+| `<C-o>`     | `<C-w>o`                                        | Close other windows                  |
 | `<C-d>`     | `:bdelete<CR>`                                  | Bdelete                              |
 | `<C-h>`     | `<C-w>h`                                        | Move to window left                  |
 | `<C-l>`     | `<C-w>l`                                        | Move to window right                 |
