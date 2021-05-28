@@ -20,12 +20,12 @@ modules['glepnir/galaxyline.nvim'] = {
     event = 'VimEnter',
     branch = 'main',
     config = ui_config.galaxyline,
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = {{'kyazdani42/nvim-web-devicons', after = 'galaxyline.nvim'}}
 }
 
 modules['romgrk/barbar.nvim'] = {
     event = 'VimEnter',
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = {{'kyazdani42/nvim-web-devicons', opt = true}}
 }
 
 modules['lukas-reineke/indent-blankline.nvim'] = {
@@ -37,7 +37,7 @@ modules['lukas-reineke/indent-blankline.nvim'] = {
 modules['kyazdani42/nvim-tree.lua'] = {
     cmd = 'NvimTreeToggle',
     config = ui_config.tree,
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = {{'kyazdani42/nvim-web-devicons', opt = true}}
 }
 
 modules['kevinhwang91/rnvimr'] = {
@@ -54,7 +54,7 @@ modules['norcalli/nvim-colorizer.lua'] = {
 
 modules['junegunn/goyo.vim'] = {
     cmd = 'Goyo',
-    requires = 'junegunn/limelight.vim',
+    requires = {{'junegunn/limelight.vim', after = 'goyo.vim'}},
     config = ui_config.goyo
 }
 
@@ -81,14 +81,14 @@ modules['lambdalisue/suda.vim'] = {
 }
 
 modules['terrortylor/nvim-comment'] = {
-    cmd = "CommentToggle",
+    cmd = 'CommentToggle',
     config = editor_config.comment
 }
 
 modules['sbdchd/neoformat'] = {cmd = 'Neoformat'}
 
 modules['windwp/nvim-autopairs'] = {
-    after = "nvim-treesitter",
+    after = 'nvim-treesitter',
     config = editor_config.autopairs
 }
 
@@ -159,7 +159,7 @@ modules['pechorin/any-jump.vim'] = {
 
 modules['folke/lsp-trouble.nvim'] = {
     event = 'BufRead',
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
     config = languages_config.trouble
 }
 
@@ -213,7 +213,7 @@ modules['kristijanhusak/vim-dadbod-ui'] = {
 }
 
 modules['AckslD/nvim-whichkey-setup.lua'] = {
-    event = {"VimEnter", "BufReadPre"},
+    event = {'VimEnter', 'BufReadPre'},
     requires = 'liuchengxu/vim-which-key',
     config = tools_config.whichkey
 }
