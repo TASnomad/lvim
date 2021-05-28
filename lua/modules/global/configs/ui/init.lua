@@ -54,10 +54,10 @@ function config.galaxyline()
     local gl = require('galaxyline')
     gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
     local colors = {
-        bg = "#222222",
+        bg = "#2A2F3A",
         fg = "#E7BC74",
-        line_bg = "#222222",
-        lbg = "#222222",
+        line_bg = "#2A2F3A",
+        lbg = "#2A2F3A",
         fg_green = "#458588",
         yellow = "#E6B673",
         cyan = "#39A291",
@@ -69,7 +69,7 @@ function config.galaxyline()
         gray = "#E7BC74",
         blue = "#83a598",
         red = "#F24949",
-        error_red = '#F24949'
+        error_red = "#F24949"
     }
     local condition = require('galaxyline.condition')
     local gls = gl.section
@@ -295,21 +295,19 @@ end
 function config.indent_blankline()
     vim.g.indent_blankline_char = '▏'
     vim.g.indent_blankline_show_first_indent_level = true
-    vim.g.indent_blankline_filetype_exclude =
-        {
-            "startify", "dashboard", "dotooagenda", "log", "fugitive",
-            "gitcommit", "packer", "vimwiki", "markdown", "json", "txt",
-            "vista", "help", "todoist", "NvimTree", "peekaboo", "git",
-            "TelescopePrompt", "undotree", "flutterToolsOutline", ""
-        }
+    vim.g.indent_blankline_filetype_exclude = {
+        "startify", "dashboard", "dotooagenda", "log", "fugitive", "gitcommit",
+        "packer", "vimwiki", "markdown", "json", "txt", "vista", "help",
+        "todoist", "NvimTree", "peekaboo", "git", "TelescopePrompt", "undotree",
+        "flutterToolsOutline", ""
+    }
     vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
     vim.g.indent_blankline_show_trailing_blankline_indent = false
     vim.g.indent_blankline_show_current_context = true
-    vim.g.indent_blankline_context_patterns =
-        {
-            "class", "function", "method", "block", "list_literal", "selector",
-            "^if", "^table", "if_statement", "while", "for"
-        }
+    vim.g.indent_blankline_context_patterns = {
+        "class", "function", "method", "block", "list_literal", "selector",
+        "^if", "^table", "if_statement", "while", "for"
+    }
     vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
 end
 
