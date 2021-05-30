@@ -18,14 +18,13 @@ modules['glepnir/dashboard-nvim'] = {
 
 modules['glepnir/galaxyline.nvim'] = {
     event = {'BufRead', 'BufNewFile'},
-    branch = 'main',
     config = ui_config.galaxyline,
-    requires = {{'kyazdani42/nvim-web-devicons', after = 'galaxyline.nvim'}}
+    requires = 'kyazdani42/nvim-web-devicons'
 }
 
 modules['romgrk/barbar.nvim'] = {
     event = 'VimEnter',
-    requires = {{'kyazdani42/nvim-web-devicons', after = 'barbar.nvim'}}
+    requires = 'kyazdani42/nvim-web-devicons'
 }
 
 modules['lukas-reineke/indent-blankline.nvim'] = {
@@ -37,7 +36,7 @@ modules['lukas-reineke/indent-blankline.nvim'] = {
 modules['kyazdani42/nvim-tree.lua'] = {
     cmd = 'NvimTreeToggle',
     config = ui_config.tree,
-    requires = {{'kyazdani42/nvim-web-devicons', after = 'nvim-tree.lua'}}
+    requires = 'kyazdani42/nvim-web-devicons'
 }
 
 modules['kevinhwang91/rnvimr'] = {
@@ -100,13 +99,13 @@ modules['MattesGroeger/vim-bookmarks'] = {
 modules['mbbill/undotree'] = {cmd = 'UndotreeToggle'}
 
 modules['kkoomen/vim-doge'] = {
-    event = 'BufReadPre',
+    event = {'BufRead', 'BufNewFile'},
     run = ':call doge#install()',
     config = editor_config.doge
 }
 
 modules['lewis6991/gitsigns.nvim'] = {
-    event = {'BufRead', 'BufNewFile'},
+    event = {'BufReadPre', 'BufNewFile'},
     config = editor_config.gitsigns,
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
@@ -146,7 +145,6 @@ modules['mfussenegger/nvim-jdtls'] = {}
 
 modules['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
-    after = 'telescope.nvim',
     config = languages_config.treesitter,
     requires = {{'nvim-treesitter/playground', opt = true}},
     run = ':TSUpdate'
@@ -159,8 +157,8 @@ modules['pechorin/any-jump.vim'] = {
 
 modules['folke/lsp-trouble.nvim'] = {
     event = 'BufRead',
-    requires = {{'kyazdani42/nvim-web-devicons', after = 'lsp-trouble.nvim'}},
-    config = languages_config.trouble
+    config = languages_config.trouble,
+    requires = 'kyazdani42/nvim-web-devicons'
 }
 
 modules['simrat39/symbols-outline.nvim'] = {
@@ -219,9 +217,11 @@ modules['AckslD/nvim-whichkey-setup.lua'] = {
 }
 
 modules['iamcco/markdown-preview.nvim'] = {
-    event = {"VimEnter", "BufReadPre"},
+    event = {'VimEnter', 'BufReadPre'},
     run = 'cd app && yarn install'
 }
+
+-- modules['airblade/vim-rooter'] = {config = tools_config.rooter}
 
 modules['ahmedkhalf/lsp-rooter.nvim'] = {event = 'VimEnter'}
 
