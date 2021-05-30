@@ -25,7 +25,7 @@ modules['glepnir/galaxyline.nvim'] = {
 
 modules['romgrk/barbar.nvim'] = {
     event = 'VimEnter',
-    requires = {{'kyazdani42/nvim-web-devicons', opt = true}}
+    requires = {{'kyazdani42/nvim-web-devicons', after = 'barbar.nvim'}}
 }
 
 modules['lukas-reineke/indent-blankline.nvim'] = {
@@ -37,7 +37,7 @@ modules['lukas-reineke/indent-blankline.nvim'] = {
 modules['kyazdani42/nvim-tree.lua'] = {
     cmd = 'NvimTreeToggle',
     config = ui_config.tree,
-    requires = {{'kyazdani42/nvim-web-devicons', opt = true}}
+    requires = {{'kyazdani42/nvim-web-devicons', after = 'nvim-tree.lua'}}
 }
 
 modules['kevinhwang91/rnvimr'] = {
@@ -159,7 +159,7 @@ modules['pechorin/any-jump.vim'] = {
 
 modules['folke/lsp-trouble.nvim'] = {
     event = 'BufRead',
-    requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
+    requires = {{'kyazdani42/nvim-web-devicons', after = 'lsp-trouble.nvim'}},
     config = languages_config.trouble
 }
 
