@@ -39,11 +39,6 @@ modules['kyazdani42/nvim-tree.lua'] = {
     requires = 'kyazdani42/nvim-web-devicons'
 }
 
-modules['kevinhwang91/rnvimr'] = {
-    cmd = 'RnvimrToggle',
-    config = ui_config.ranger
-}
-
 modules['vifm/vifm.vim'] = {cmd = 'Vifm'}
 
 modules['norcalli/nvim-colorizer.lua'] = {

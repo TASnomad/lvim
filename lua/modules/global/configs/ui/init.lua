@@ -19,10 +19,7 @@ function config.dashboard()
             description = {'  Projects           '},
             command = 'Telescope project'
         },
-        b = {
-            description = {'  File Browser       '},
-            command = 'RnvimrToggle'
-        },
+        b = {description = {'  File Browser       '}, command = 'Vifm'},
         c = {
             description = {'  Find File          '},
             command = 'Telescope find_files'
@@ -338,13 +335,6 @@ function config.tree()
             symlink = ""
         }
     }
-end
-
-function config.ranger()
-    vim.g.rnvimr_ex_enable = 1
-    vim.g.rnvimr_draw_border = 1
-    vim.g.rnvimr_pick_enable = 1
-    vim.g.rnvimr_bw_enable = 1
 end
 
 function config.colorize()

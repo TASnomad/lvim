@@ -247,6 +247,4 @@ function config.whichkey()
 
 end
 
-function config.rooter() vim.g.rooter_silent_chdir = 1 end
-
 return config

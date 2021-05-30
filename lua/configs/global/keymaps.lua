@@ -23,7 +23,6 @@ keymaps['normal'] = {
     {'<S-r>', '<C-W>v'}, -- Split right
     {'<S-b>', '<C-W>s'}, -- Split bottom
     {'<S-e>', ':NvimTreeToggle<CR>'}, -- NvimTree explorer toggle
-    {'<S-h>', ':RnvimrToggle<CR>'}, -- Ranger explorer toggle
     {'<S-u>', ':Vifm<CR>'}, -- Vifm explorer
     {'<S-f>', ':Telescope find_files<CR>'}, -- File search
     {'<S-w>', ':Telescope live_grep<CR>'}, -- Text search
