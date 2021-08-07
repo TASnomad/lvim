@@ -13,4 +13,20 @@ local modules = {}
 --     your code
 -- }
 
+modules["nvim-lua/plenary.nvim"] = { }
+modules["f-person/git-blame.nvim"] = false
+modules["nacro90/numb.nvim"] = {
+        event = "BufRead",
+        config = function()
+                require "numb".setup { show_numbers = true, show_cursorline = true }
+        end
+}
+modules["folke/todo-comments.nvim"] = {
+        config = function()
+                require "todo-comments".setup { }
+        end,
+        requires = "nvim-lua/plenary.nvim"
+}
+
+
 return modules

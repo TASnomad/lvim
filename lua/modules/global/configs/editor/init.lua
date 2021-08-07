@@ -113,7 +113,11 @@ end
 
 function config.suda() vim.g.suda_smart_edit = 1 end
 
-function config.comment() require("nvim_comment").setup() end
+function config.comment()
+        local st_ok, nvim_comment = pcall(require, "nvim_comment")
+        if not st_ok then return end
+        nvim_comment.setup()
+end
 
 function config.autopairs()
     if not packer_plugins["nvim-treesitter"].loaded then

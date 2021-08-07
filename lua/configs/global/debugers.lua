@@ -60,10 +60,39 @@ M.init_dap = function()
         vim.fn.sign_define("DapLogPoint",
                            {text = "▶", texthl = "", linehl = "", numhl = ""})
 
+        dap.adapters.c = {
+                type = "executable",
+                attach = {pidProperty = "pid", pidSelect = "ask"},
+                command = "lldb-vscode-12",
+                name = "lldb"
+        }
+        dap.configurations.c = {
+            {
+                type = "c",
+                request = "launch",
+                name = "Launch",
+                program = function()
+                    return vim.fn.input("Path to executable: ",
+                                        vim.fn.getcwd() .. global.path_sep,
+                                        "file")
+                end,
+                args = {},
+                cwd = "${workspaceFolder}",
+                env = function()
+                    local variables = {}
+                    for k, v in pairs(vim.fn.environ()) do
+                        table.insert(variables, string.format("%s=%s", k, v))
+                    end
+                    return variables
+                end,
+                stopOnEntry = false
+            }
+        }
+
         dap.adapters.cpp = {
             type = "executable",
             attach = {pidProperty = "pid", pidSelect = "ask"},
-            command = "lldb-vscode",
+            command = "lldb-vscode-12",
             name = "lldb"
         }
         dap.configurations.cpp = {
