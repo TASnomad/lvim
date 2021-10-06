@@ -29,6 +29,12 @@ modules["lvim-tech/galaxyline.nvim"] = {
     requires = "kyazdani42/nvim-web-devicons"
 }
 
+-- modules["NTBBloodbath/galaxyline.nvim"] = {
+--     event = {"VimEnter", "BufRead", "BufNewFile"},
+--     config = ui_config.galaxyline,
+--     requires = "kyazdani42/nvim-web-devicons"
+-- }
+
 modules["lukas-reineke/indent-blankline.nvim"] = {
     event = {"BufRead", "BufNewFile"},
     config = ui_config.indent_blankline
@@ -128,7 +134,6 @@ modules["sindrets/diffview.nvim"] = {
 }
 
 modules["f-person/git-blame.nvim"] = {
-    event = {"BufRead", "BufNewFile"},
     config = editor_config.blame
 }
 
@@ -159,7 +164,7 @@ modules["akinsho/flutter-tools.nvim"] = {
 
 modules["jose-elias-alvarez/nvim-lsp-ts-utils"] = {event = "VimEnter"}
 
-modules["ray-x/lsp_signature.nvim"] = {opt = true}
+modules["ray-x/lsp_signature.nvim"] = {}
 
 modules["nvim-treesitter/nvim-treesitter"] = {
     event = {"BufRead", "BufNewFile"},
@@ -201,14 +206,24 @@ modules["rcarriga/nvim-dap-ui"] = {opt = true}
 
 local completion_config = require("modules.global.configs.completion")
 
-modules["hrsh7th/nvim-compe"] = {
+modules["hrsh7th/nvim-cmp"] = {
     event = "InsertEnter",
-    config = completion_config.compe
+    config = completion_config.cmp,
+    requires = {
+        {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-path', after = 'nvim-cmp'}
+    }
 }
 
-modules["hrsh7th/vim-vsnip"] = {after = "nvim-compe"}
-
-modules["rafamadriz/friendly-snippets"] = {after = "nvim-compe"}
+modules["hrsh7th/vim-vsnip"] = {
+    event = "InsertEnter",
+    requires = {
+        {'hrsh7th/vim-vsnip-integ', after = 'vim-vsnip'},
+        {'rafamadriz/friendly-snippets', after = 'vim-vsnip'}
+    }
+}
 
 modules["onsails/lspkind-nvim"] = {
     event = {"BufRead", "BufNewFile"},

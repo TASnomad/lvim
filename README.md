@@ -2,7 +2,7 @@
 
 ![lvim-logo](https://user-images.githubusercontent.com/82431193/115121988-3bc06800-9fbe-11eb-8dab-19f624aa7b93.png)
 
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/lvim-tech/lvim/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/lvim-tech/lvim/blob/master/LICENSE)
 
 ## About
 
@@ -12,8 +12,8 @@
 - Add or remove settings, rewrite all settings
 - Dynamic LSP activation
 - Dynamic debugging activation - Vimspector or Dap
-- By default - 57 plugins
-- Loading time - 058.681
+- By default - 63 plugins
+- Loading time - 060.260
 
 ## HELP FOR LVIM
 
@@ -117,7 +117,7 @@
 git clone https://github.com/lvim-tech/lvim.git ~/.config/nvim
 ```
 
-2. Export path to [bin](https://github.com/lvim-tech/lvim/tree/main/bin) folder in your shell (`.bashrc`, `.zshrc` etc)
+2. Export path to [bin](https://github.com/lvim-tech/lvim/tree/master/bin) folder in your shell (`.bashrc`, `.zshrc` etc)
 
 ```
 export PATH="$HOME/.config/nvim/bin:$PATH"
@@ -207,11 +207,9 @@ export PATH="$HOME/.config/nvim/bin:$PATH"
 
 ### Completion
 
-[nvim-compe](https://github.com/hrsh7th/nvim-compe)
+[nvim-cmp](https://github.com/hrsh7th/nvim-cmp) (requires [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) \| [cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip) \| [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) \| [cmp-path](https://github.com/hrsh7th/cmp-path))
 
-[vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
-
-[friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+[vim-vsnip](https://github.com/hrsh7th/vim-vsnip) (requires [vim-vsnip-integ](https://github.com/hrsh7th/vim-vsnip-integ) \| [friendly-snippets](https://github.com/rafamadriz/friendly-snippets))
 
 [lspkind-nvim](https://github.com/onsails/lspkind-nvim)
 
@@ -477,9 +475,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Modules (plugins)
 
-All included plugins are in this [file](https://github.com/lvim-tech/lvim/blob/main/lua/modules/global/init.lua) by default
+All included plugins are in this [file](https://github.com/lvim-tech/lvim/blob/master/lua/modules/global/init.lua) by default
 
-You can modify plugins from this [file](https://github.com/lvim-tech/lvim/blob/main/lua/modules/custom/init.lua)
+You can modify plugins from this [file](https://github.com/lvim-tech/lvim/blob/master/lua/modules/custom/init.lua)
 
 ### Remove an existing plugin(s)
 
@@ -521,9 +519,9 @@ return modules
 
 ### Configs (settings)
 
-All settings are in this [file](https://github.com/lvim-tech/lvim/blob/main/lua/configs/global/init.lua)
+All settings are in this [file](https://github.com/lvim-tech/lvim/blob/master/lua/configs/global/init.lua)
 
-You can modify settings from this [file](https://github.com/lvim-tech/lvim/blob/main/lua/configs/custom/init.lua)
+You can modify settings from this [file](https://github.com/lvim-tech/lvim/blob/master/lua/configs/custom/init.lua)
 
 ### Remove an existing setting(s)
 
@@ -561,83 +559,6 @@ return modules
 
 > **IMPORTANT:**  After any changes run `:PackerSync` and restart nvim
 
-## Customize LSP
-
-### Global
-
-1. Modify `configs['events']` from this [file](https://github.com/lvim-tech/lvim/blob/main/lua/configs/custom/init.lua)
-
-```lua
-configs['events'] = function()
-    funcs.augroups({
-        _general_settings = {
-            {
-                'TextYankPost', '*',
-                'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'
-            }, {
-                'BufWinEnter', '*',
-                'setlocal formatoptions-=c formatoptions-=r formatoptions-=o number relativenumber cursorcolumn cursorline '
-            }, {
-                'BufRead', '*',
-                'setlocal formatoptions-=c formatoptions-=r formatoptions-=o number relativenumber cursorcolumn cursorline '
-            }, {
-                'BufNewFile', '*',
-                'setlocal formatoptions-=c formatoptions-=r formatoptions-=o number relativenumber cursorcolumn cursorline '
-            },
-            {'BufWinEnter', '*.ex', 'set filetype=elixir'},
-            {'BufWinEnter', '*.exs', 'set filetype=elixir'},
-            {'BufNewFile', '*.ex', 'set filetype=elixir'},
-            {'BufNewFile', '*.exs', 'set filetype=elixir'},
-            {'BufWinEnter', '*.graphql', 'set filetype=graphql'}
-        },
-        _lsp = {
-            {'FileType', '*', 'lua require("configs.custom.filetypes").init()'}
-        },
-        _dashboard = {
-            {
-                'FileType', 'dashboard',
-                'setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= '
-            }, {
-                'FileType', 'dashboard',
-                'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'
-            }
-        },
-        _floaterm = {
-            {
-                'FileType', 'floaterm',
-                'setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= '
-            }
-        }
-    })
-end
-```
-
-2. Add your LSP settings in this [folder](https://github.com/lvim-tech/lvim/tree/main/lua/lsp/custom)
-
-> **IMPORTANT:**  After this change run `:PackerSync` and restart nvim
-
-### For project
-
-1. Create folder `.lvim` in root directory of your project
-2. Create in this folder file with name of current language (for example `python.lua`)
-3. Add your settings in this file
-
-Example:
-
-```lua
-local M = {}
-
-local path_sep = package.config:sub(1, 1)
-
-M.lsp_config = 'lsp.custom.languages.python'
-
-M.lsp_command = ':LspStart pyright'
-
-return M
-```
-
-> **IMPORTANT:**  After this change run `:PackerSync` and restart nvim
-
 ## Debuggers
 
 You can use `Vimpector` or `DAP (Debug Adapter Protocol)`
@@ -656,7 +577,7 @@ You can use `Vimpector` or `DAP (Debug Adapter Protocol)`
 :VimspectorInstall --all
 ```
 
-You can generate `.vimspector.json` file for your current project with script from [bin](https://github.com/lvim-tech/lvim/tree/main/bin) folder
+You can generate `.vimspector.json` file for your current project with script from [bin](https://github.com/lvim-tech/lvim/tree/master/bin) folder
 
 ```
 vsconfig
